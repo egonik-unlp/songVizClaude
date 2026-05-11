@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Song Visualizer</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+    <div id="labels-root"></div>
+
+    <div id="drop-overlay">
+      <div class="drop-card">
+        <h1>3D Song Visualizer</h1>
+        <p>Drag and drop an audio file here, or click to choose.</p>
+        <p class="hint">MP3, WAV, OGG, FLAC, M4A &mdash; anything your browser can decode.</p>
+      </div>
+      <input type="file" id="file-input" accept="audio/*" hidden />
+    </div>
+
+    <div id="settings">
+      <button id="settings-toggle" title="Settings">&#9881;</button>
+      <div id="settings-panel" hidden>
+        <label>
+          FFT size
+          <select id="fft-size">
+            <option value="256">256</option>
+            <option value="512">512</option>
+            <option value="1024">1024</option>
+            <option value="2048" selected>2048</option>
+            <option value="4096">4096</option>
+            <option value="8192">8192</option>
+          </select>
+        </label>
+        <label>
+          Smoothing
+          <input type="range" id="smoothing" min="0" max="0.99" step="0.01" value="0.7" />
+          <span id="smoothing-val">0.70</span>
+        </label>
+
+        <hr class="settings-divider" />
+
+        <label class="toggle-row">
+          <input type="checkbox" id="mix-toggle" />
+          <span>Mix mode</span>
+        </label>
+
+        <div id="mix-panel" hidden>
+          <div class="track-row" data-track="A">
+            <div class="track-header">
+              <span class="track-tag">A</span>
+              <span class="track-name" id="track-a-name">no file</span>
+              <button class="track-load" id="track-a-load" title="Load file">&#128194;</button>
+            </div>
+            <div class="track-controls">
+              <button class="track-play" id="track-a-play" aria-label="Play/Pause Track A">&#9658;</button>
+              <input type="range" class="track-seek" id="track-a-seek" min="0" max="1" step="0.001" value="0" />
+              <span class="track-time" id="track-a-time">0:00 / 0:00</span>
+            </div>
+            <div class="track-eq" data-track="A">
+              <label><span class="eq-tag">L</span><input type="range" class="eq-slider" data-track="A" data-band="low"  min="-18" max="6" step="0.5" value="0" /></label>
+              <label><span class="eq-tag">M</span><input type="range" class="eq-slider" data-track="A" data-band="mid"  min="-18" max="6" step="0.5" value="0" /></label>
+              <label><span class="eq-tag">H</span><input type="range" class="eq-slider" data-track="A" data-band="high" min="-18" max="6" step="0.5" value="0" /></label>
+            </div>
+          </div>
+
+          <div class="track-row" data-track="B">
+            <div class="track-header">
+              <span class="track-tag">B</span>
+              <span class="track-name" id="track-b-name">no file</span>
+              <button class="track-load" id="track-b-load" title="Load file">&#128194;</button>
+            </div>
+            <div class="track-controls">
+              <button class="track-play" id="track-b-play" aria-label="Play/Pause Track B">&#9658;</button>
+              <input type="range" class="track-seek" id="track-b-seek" min="0" max="1" step="0.001" value="0" />
+              <span class="track-time" id="track-b-time">0:00 / 0:00</span>
+            </div>
+            <div class="track-eq" data-track="B">
+              <label><span class="eq-tag">L</span><input type="range" class="eq-slider" data-track="B" data-band="low"  min="-18" max="6" step="0.5" value="0" /></label>
+              <label><span class="eq-tag">M</span><input type="range" class="eq-slider" data-track="B" data-band="mid"  min="-18" max="6" step="0.5" value="0" /></label>
+              <label><span class="eq-tag">H</span><input type="range" class="eq-slider" data-track="B" data-band="high" min="-18" max="6" step="0.5" value="0" /></label>
+            </div>
+          </div>
+
+          <label class="crossfader-label">
+            <span class="cf-end cf-a">A</span>
+            <input type="range" id="crossfader" min="0" max="1" step="0.01" value="0.5" />
+            <span class="cf-end cf-b">B</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div id="transport" hidden>
+      <button id="play-pause" aria-label="Play/Pause">&#9658;</button>
+      <input type="range" id="seek" min="0" max="1" step="0.001" value="0" />
+      <span id="time-label">0:00 / 0:00</span>
+      <button id="load-new" title="Load another file">&#128194;</button>
+    </div>
+
+    <audio id="audio" crossorigin="anonymous"></audio>
+    <audio id="audio-b" crossorigin="anonymous"></audio>
+    <input type="file" id="file-input-b" accept="audio/*" hidden />
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
