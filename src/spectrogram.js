@@ -4,13 +4,13 @@ import * as THREE from 'three';
 export const COLORMAPS = {
   // Mix terrain — sunset-inspired heatmap.
   heatmap: [
-    [0.00, [  5,   6,  24]],
-    [0.18, [ 38,  22,  86]],
-    [0.36, [112,  38, 126]],
-    [0.55, [210,  73,  96]],
-    [0.74, [246, 132,  54]],
-    [0.90, [255, 202,  82]],
-    [1.00, [255, 238, 170]],
+    [0.00, [  4,   4,  18]],
+    [0.18, [ 32,  14,  58]],
+    [0.36, [ 96,  24,  78]],
+    [0.55, [178,  38,  66]],
+    [0.74, [226,  74,  38]],
+    [0.90, [244, 142,  48]],
+    [1.00, [255, 188,  92]],
   ],
   // Track A shadow — cool blues/cyans. Lowest stop is dim but visible so the
   // wireframe is still perceptible when the track is silent.
