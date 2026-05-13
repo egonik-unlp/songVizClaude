@@ -2,15 +2,15 @@ import * as THREE from 'three';
 
 // Each colormap is a list of [t, [r,g,b]] stops with t in [0,1].
 export const COLORMAPS = {
-  // Mix terrain — classic spectrogram heatmap (rainbow)
+  // Mix terrain — sunset-inspired heatmap.
   heatmap: [
-    [0.00, [  4,   6,  30]],
-    [0.15, [ 20,  30, 110]],
-    [0.35, [ 40, 120, 200]],
-    [0.55, [ 60, 200, 140]],
-    [0.75, [240, 220,  60]],
-    [0.90, [240, 120,  40]],
-    [1.00, [220,  40,  30]],
+    [0.00, [  5,   6,  24]],
+    [0.18, [ 38,  22,  86]],
+    [0.36, [112,  38, 126]],
+    [0.55, [210,  73,  96]],
+    [0.74, [246, 132,  54]],
+    [0.90, [255, 202,  82]],
+    [1.00, [255, 238, 170]],
   ],
   // Track A shadow — cool blues/cyans. Lowest stop is dim but visible so the
   // wireframe is still perceptible when the track is silent.

@@ -99,7 +99,7 @@ Defined in `COLORMAPS` (`src/spectrogram.js`) as named lists of `[t, [r, g, b]]`
 
 | Name      | Use            | Palette                                       |
 |-----------|----------------|-----------------------------------------------|
-| `heatmap` | Mix surface    | Dark blue → cyan → green → yellow → orange → red |
+| `heatmap` | Mix surface    | Deep navy-violet → purple → rose → orange → amber → pale yellow |
 | `cool`    | Track A shadow | Dim teal → blue → cyan → near-white           |
 | `warm`    | Track B shadow | Dim wine → red-orange → orange → yellow       |
 
